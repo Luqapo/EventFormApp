@@ -32,7 +32,12 @@ export class App extends Component {
     }
     this.props.setError(error);
     if(!error){
-      fetch('http://localhost:5000/api/register', {
+      this.fetchData();
+    }
+  }
+
+  fetchData(){
+    fetch('http://localhost:5000/api/register', {
         method : 'POST',
         body : JSON.stringify({
           firstName: this.props.firstName,
@@ -51,7 +56,6 @@ export class App extends Component {
       .catch( error => {
          this.props.setError(error.message);
       })
-    }
   }
 
   render() {
@@ -65,27 +69,31 @@ export class App extends Component {
               <input className="InputElement" 
                      type="text" 
                      name="firstName" 
-                     onChange={this.handleChange} />
+                     onChange={this.handleChange}
+                     required/>
             </label>
             <label className="Label">
               Last name
               <input className="InputElement" 
                      type="text" 
                      name="lastName" 
-                     onChange={this.handleChange}/>
+                     onChange={this.handleChange}
+                     required/>
             </label>
             <label className="Label">
               Email
               <input className="InputElement" 
                      type="email" 
                      name="email" 
-                     onChange={this.handleChange}/>
+                     onChange={this.handleChange}
+                     required/>
             </label>
             <label className="Label">
               Date
               <input className="InputElement" 
                      type="date" name="date" 
-                     onChange={this.handleChange}/>
+                     onChange={this.handleChange}
+                     required/>
             </label>
             <label className="Error">
               {this.props.message}
