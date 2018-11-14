@@ -45,10 +45,12 @@ router.route('/register')
                 res.status(200).send({ message: 'Event added' });
             })
         } else {
-            res.send({ message: error });
+            res.status(400).send({ message: error });
         }
     })
 
 app.listen( PORT, () => {
     console.log(`Server listen at ${PORT}`)
 })
+
+module.exports = app;
