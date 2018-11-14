@@ -19,15 +19,34 @@ router.use(bodyParser.json());
 
 router.route('/register')
     .post((req,res) => {
-        Event.create({
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            email: req.body.email,
-            date: req.body.date
-        }, (err,event) => {
-            if(err) res.status(500).send({ message: 'There was problem registering the user.' });
-            res.status(200).send({ message: 'Event added' });
-        })
+        let error = '';
+        if(!req.body.firstName){
+          error = 'First name is required!';
+        }
+        if(!req.body.lastName){
+          error = 'Last name is required!';
+        }
+        if(!req.body.email){
+          error = 'Email is required!';
+        } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(req.body.email)){
+          error = 'Invalid email addres';
+        }
+        if(!req.body.date){
+          error = 'Date is required!';
+        }
+        if(!error){
+            Event.create({
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                email: req.body.email,
+                date: req.body.date
+            }, (err,event) => {
+                if(err) res.status(500).send({ message: 'There was problem registering the user.' });
+                res.status(200).send({ message: 'Event added' });
+            })
+        } else {
+            res.send({ message: error });
+        }
     })
 
 app.listen( PORT, () => {

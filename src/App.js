@@ -49,7 +49,7 @@ class App extends Component {
         this.props.setError(response.message);
         })
       .catch( error => {
-        this.props.setError(error);
+         this.props.setError(error.message);
       })
     }
   }
