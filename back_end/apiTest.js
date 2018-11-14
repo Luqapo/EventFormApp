@@ -132,7 +132,7 @@ describe('POST /api/register', function() {
             .set('Accept', 'application/json')
             .expect('Content-Type', /json/)
             .expect(200)
-            .expect({"message" : "Event added"})
+            .expect({"message" : "Event added."})
             .end((err) => {
                 if (err) return done(err);
                 done();
