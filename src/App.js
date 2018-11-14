@@ -32,7 +32,25 @@ class App extends Component {
     }
     this.props.setError(error);
     if(!error){
-      console.log('Data sended');
+      fetch('http://localhost:5000/api/register', {
+        method : 'POST',
+        body : JSON.stringify({
+          firstName: this.props.firstName,
+          lastName: this.props.lastName,
+          email: this.props.email,
+          date: this.props.date
+        }),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+       })
+      .then( resp => resp.json())
+      .then( response => {
+        this.props.setError(response.message);
+        })
+      .catch( error => {
+        this.props.setError(error);
+      })
     }
   }
 
