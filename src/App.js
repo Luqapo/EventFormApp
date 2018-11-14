@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import './App.css';
 import * as actionTypes from './store/actions';
 
-class App extends Component {
+export class App extends Component {
 
   handleChange = (event) => {
     const value = event.target.value;

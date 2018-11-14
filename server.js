@@ -41,7 +41,7 @@ router.route('/register')
                 email: req.body.email,
                 date: req.body.date
             }, (err,event) => {
-                if(err) res.status(500).send({ message: 'There was problem registering the user.' });
+                if(err) res.status(500).send({ message: 'There was problem registering event.' });
                 res.status(200).send({ message: 'Event added' });
             })
         } else {

@@ -17,7 +17,7 @@ const reducer = (state = initialState, action) => {
                     [action.inputName]: action.inputValue
                     }
                 }
-                case actionTypes.CHECK_ERROR:
+        case actionTypes.CHECK_ERROR:
                 return {
                     ...state = {
                         ...state,
