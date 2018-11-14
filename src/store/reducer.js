@@ -4,7 +4,8 @@ const initialState = {
     firstName: '',
     lastName: '',
     email: '',
-    date: ''
+    date: '',
+    message: ''
 }
 
 const reducer = (state = initialState, action) => {
@@ -14,6 +15,13 @@ const reducer = (state = initialState, action) => {
                     ...state = {
                         ...state,
                     [action.inputName]: action.inputValue
+                    }
+                }
+                case actionTypes.CHECK_ERROR:
+                return {
+                    ...state = {
+                        ...state,
+                    message: action.errorMessage
                     }
                 }
         default:

@@ -15,7 +15,25 @@ class App extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.props);
+    let error = '';
+    if(!this.props.firstName){
+      error = 'First name is required!';
+    }
+    if(!this.props.lastName){
+      error = 'Last name is required!';
+    }
+    if(!this.props.email){
+      error = 'Email is required!';
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(this.props.email)){
+      error = 'Invalid email addres';
+    }
+    if(!this.props.date){
+      error = 'Date is required!';
+    }
+    this.props.setError(error);
+    if(!error){
+      console.log('Data sended');
+    }
   }
 
   render() {
@@ -51,6 +69,9 @@ class App extends Component {
                      type="date" name="date" 
                      onChange={this.handleChange}/>
             </label>
+            <label className="Error">
+              {this.props.message}
+            </label>
             <input className="InputElement" type="submit"/>
           </form>
         </div>
@@ -64,7 +85,8 @@ const mapSateToProps = state => {
     firstName: state.firstName,
     lastName: state.lastName,
     email: state.email,
-    date: state.date
+    date: state.date,
+    message: state.message
   };
 };
 
@@ -72,7 +94,9 @@ const mapDispatchToProps = dispatch => {
   return {
     setValue: (name, value) => dispatch({ type: actionTypes.SET_VALUE, 
                                           inputName: name, 
-                                          inputValue: value })
+                                          inputValue: value }),
+    setError: (message) => dispatch({ type: actionTypes.CHECK_ERROR,
+                                            errorMessage: message})
   }
 }
 
