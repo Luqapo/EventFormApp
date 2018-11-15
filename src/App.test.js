@@ -14,9 +14,14 @@ describe('<App />', () => {
         wrapper = shallow(<App />);
     })
     
-    it('should render <App />', () => {
+    it('should render <App /> and check input', () => {
         expect(wrapper.find('input')).toHaveLength(5);
     })
+
+    it('should render <App /> and check label', () => {
+        expect(wrapper.find('label')).toHaveLength(5);
+    })
+
     it('should call preventDefault', () => {
         const preventDefault = jest.fn();
         const setError = jest.fn();

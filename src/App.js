@@ -75,7 +75,7 @@ export class App extends Component {
     }
     return (
       <div className="App">
-        <h1>Add Event</h1>
+        <h1>Register new Event</h1>
         <div className="Form">
           <form className="Input" onSubmit={this.handleSubmit}>
             <label className="Label">
