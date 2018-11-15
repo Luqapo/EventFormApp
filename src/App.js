@@ -49,16 +49,30 @@ export class App extends Component {
             'Content-Type': 'application/json',
         },
        })
-      .then( resp => resp.json())
-      .then( response => {
-        this.props.setError(response.message);
+      .then( resp => {
+        if (resp.ok){
+          return resp.json();
+        } else {
+            async function getErorrMessage(){
+              const errorMessage = await resp.json();
+              alert(errorMessage.message);
+            }
+            getErorrMessage();
+        }
+      })
+      .then( resp => {
+        this.props.setError(resp.message);
         })
       .catch( error => {
-         this.props.setError(error.message);
+         alert('Network error!');
       })
   }
 
   render() {
+    let messageClass = 'Error'
+    if(this.props.message === 'Event added.'){
+        messageClass = 'Succes'
+    }
     return (
       <div className="App">
         <h1>Add Event</h1>
@@ -95,7 +109,7 @@ export class App extends Component {
                      onChange={this.handleChange}
                      required/>
             </label>
-            <label className="Error">
+            <label className={messageClass}>
               {this.props.message}
             </label>
             <input className="InputElement" type="submit"/>
@@ -119,8 +133,8 @@ const mapSateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setValue: (name, value) => dispatch({ type: actionTypes.SET_VALUE, 
-                                          inputName: name, 
-                                          inputValue: value }),
+                                                inputName: name, 
+                                                inputValue: value }),
     setError: (message) => dispatch({ type: actionTypes.CHECK_ERROR,
                                             errorMessage: message})
   }
