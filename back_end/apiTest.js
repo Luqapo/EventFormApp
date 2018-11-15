@@ -112,7 +112,9 @@ describe('POST /api/register', function() {
             .set('Accept', 'application/json')
             .expect('Content-Type', /json/)
             .expect(400)
-            .expect({"message" : "Date is required!"})
+            .expect(function(res) {
+                res.body.message.lenght > 0;
+              })
             .end((err) => {
                 if (err) return done(err);
                 done();
