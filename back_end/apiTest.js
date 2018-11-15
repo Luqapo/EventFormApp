@@ -2,7 +2,7 @@ const request = require('supertest');
 const app = require('./server');
 
 describe('POST /api/register', function() {
-     it('responsed with 400 not created', function(done) {
+     it('responsed with 400 not created, invalid email', function(done) {
         let data = {
             firstName: 'MAx',
             lastName: 'Kolnako',
@@ -22,7 +22,7 @@ describe('POST /api/register', function() {
             });
     });
 
-    it('responsed with 400 not created', function(done) {
+    it('responsed with 400 not created, first name required', function(done) {
         let data = {
             firstName: '',
             lastName: 'Kolnako',
@@ -42,7 +42,7 @@ describe('POST /api/register', function() {
             });
     });
 
-    it('responsed with 400 not created', function(done) {
+    it('responsed with 400 not created, last name required', function(done) {
         let data = {
             firstName: 'Max',
             lastName: '',
@@ -62,7 +62,7 @@ describe('POST /api/register', function() {
             });
     });
 
-    it('responsed with 400 not created', function(done) {
+    it('responsed with 400 not created, email required', function(done) {
         let data = {
             firstName: 'Max',
             lastName: 'Kolnako',
@@ -82,7 +82,7 @@ describe('POST /api/register', function() {
             });
     });
 
-    it('responsed with 400 not created', function(done) {
+    it('responsed with 400 not created, date required', function(done) {
         let data = {
             firstName: 'MAx',
             lastName: 'Kolnako',
@@ -102,7 +102,7 @@ describe('POST /api/register', function() {
             });
     });
 
-    it('responsed with 400 not created', function(done) {
+    it('responsed with 400 not created, empty object, ', function(done) {
         let data = {
             
         }
