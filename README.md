@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Simple Form App
 
-Technology: React, Redux, Node.js, Express.js, MongoDB
+Technology: React, Redux, Node.js, Express.js, MongoDB, Materia Ui 
 
 ## Installation: 
 clone repositor, use 'npm install' command and then 'npm run build' to create app file, then type 'node ./back_end/server.js' to run server ang go to 'http://localhost:5000/' to lunch app.
