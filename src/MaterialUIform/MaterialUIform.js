@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { TextField, DatePicker } from 'redux-form-material-ui';
 import Button from '@material-ui/core/Button';
@@ -20,8 +20,9 @@ const validate = values => {
   }
   
 
-const MaterialUIform = props => {
-    const { handleSubmit, pristine, reset, submitting } = props;
+export class MaterialUIform extends Component {
+    render(){
+    const { handleSubmit, pristine, reset, submitting } = this.props;
     
     return (
         <div className="Form">
@@ -62,6 +63,7 @@ const MaterialUIform = props => {
             </form>
         </div>
     )
+}
 }
 
 export default reduxForm({
