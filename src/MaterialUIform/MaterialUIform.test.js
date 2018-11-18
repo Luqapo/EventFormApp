@@ -75,7 +75,7 @@ describe('<MaterialUIform />', () =>{
         expect(wrapper.find(Button)).toHaveLength(2);
             });
 
-    it(' should render <MaterialUIform /> and chcec if renders <Button /> as we except.', () => {
+    it(' should render <MaterialUIform /> and chcec  if onSubmit method was call', () => {
         const wrapper = mount(
             <Provider store={store}>
                 <MuiThemeProvider>
